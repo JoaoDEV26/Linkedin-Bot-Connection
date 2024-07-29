@@ -30,17 +30,11 @@ botao_entrar = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[@class='nav
 botao_entrar.click()
 sleep(3)
 # Realizar o Login
-<<<<<<< HEAD
 email_lnkd = driver.find_element(By.ID, 'username')
 senha_lnkd = driver.find_element(By.ID, 'password')
 email_lnkd.send_keys(credentials["user"])
 senha_lnkd.send_keys(credentials["senha"])
 sleep(1)
-=======
-email_lnkd = driver.find_element(By.ID, "username")
-senha_lnkd = driver.find_element(By.ID, "password")
-
->>>>>>> feff9f16ca143f35e4e5423c86a7eddf3a96d0af
 enviar_login = driver.find_element(By.XPATH, "//button[@aria-label='Entrar']")
 enviar_login.click()
 sleep(4)
