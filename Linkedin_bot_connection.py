@@ -18,8 +18,6 @@ sleep(3)
 # Realizar o Login
 email_lnkd = driver.find_element(By.ID, "username")
 senha_lnkd = driver.find_element(By.ID, "password")
-email_lnkd.send_keys('jgabriel261202@gmail.com ')
-senha_lnkd.send_keys('Jgds2612.')
 
 enviar_login = driver.find_element(By.XPATH, "//button[@aria-label='Entrar']")
 enviar_login.click()
