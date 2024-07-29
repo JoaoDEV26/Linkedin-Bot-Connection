@@ -5,6 +5,20 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
+#Ler arquivo de credenciais
+def ler_arquivo(file_path):
+    with open(file_path, "r") as arquivo:
+        lines = arquivo.readlines()
+        credentials = {}
+        for line in lines:
+            if ":" in line: 
+                key,value = line.strip().split(":", 1)
+                credentials[key] = value
+        return credentials
+
+file_path_credential = "credential.txt"
+credentials = ler_arquivo(file_path_credential)
+
 # Abrir o LinkedIn
 driver = webdriver.Chrome()
 driver.get('https://br.linkedin.com/?trk=guest_homepage-basic_nav-header-logo')
@@ -16,18 +30,18 @@ botao_entrar = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[@class='nav
 botao_entrar.click()
 sleep(3)
 # Realizar o Login
-email_lnkd = driver.find_element(By.ID, "username")
-senha_lnkd = driver.find_element(By.ID, "password")
-email_lnkd.send_keys('jgabriel261202@gmail.com ')
-senha_lnkd.send_keys('Jgds2612.')
-
+email_lnkd = driver.find_element(By.ID, 'username')
+senha_lnkd = driver.find_element(By.ID, 'password')
+email_lnkd.send_keys(credentials["user"])
+senha_lnkd.send_keys(credentials["senha"])
+sleep(1)
 enviar_login = driver.find_element(By.XPATH, "//button[@aria-label='Entrar']")
 enviar_login.click()
 sleep(4)
 
 # Pesquisar por categoria de trabalho
 pesquisar = wait.until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Pesquisar']")))
-pesquisar.send_keys("Desenvolvedor Python")
+pesquisar.send_keys(credentials["profissao"])
 pesquisar.send_keys(Keys.ENTER)
 
 # Filtrar pessoas
@@ -57,8 +71,8 @@ while True:
                 continue
 
             sleep(1)
-            mensagem = driver.find_element(By.XPATH,"//textarea[@id='custom-message']")
-            mensagem.send_keys("Olá! Trabalho com Desenvolvimento Python e gostaria de manter conexão.")
+            mensagem= driver.find_element(By.XPATH,"//textarea[@id='custom-message']")
+            mensagem.send_keys(credentials["texto"])
 
             enviar_mensagem = driver.find_element(By.XPATH, "//button//span[text()='Enviar']")
             enviar_mensagem.click()
