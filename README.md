@@ -1,6 +1,6 @@
 # LinkedIn Connection Bot
 
-Este projeto utiliza Selenium para automatizar o processo de conexão com pessoas no LinkedIn. O script abre o LinkedIn, faz login, pesquisa por uma categoria de trabalho (neste caso, "Desenvolvedor Python"), filtra os resultados por pessoas, e envia uma mensagem personalizada ao se conectar.
+Este projeto utiliza Selenium para automatizar o processo de conexão com pessoas no LinkedIn. O script abre o LinkedIn, faz login, pesquisa por uma categoria de trabalho , filtra os resultados por pessoas, e envia uma mensagem personalizada ao se conectar.
 
 ## Pré-requisitos
 
@@ -31,11 +31,13 @@ Este projeto utiliza Selenium para automatizar o processo de conexão com pessoa
 
 1. **Configure suas credenciais do LinkedIn:**
 
-    No script `linkedin_connection_bot.py`, substitua as variáveis `email_lnkd` e `senha_lnkd` com seu e-mail e senha do LinkedIn:
+    No script `credentials.txt`, substitua as variáveis `user`, `senha`, `profissao` e `texto` com seu e-mail e senha do LinkedIn, a profissao que deseja buscar juntamente com a mensagem a ser enviada.
 
-    ```python
-    email_lnkd.send_keys('seu-email@gmail.com')
-    senha_lnkd.send_keys('sua-senha')
+    ```plaintext
+    user:seuemail@example.com
+    senha:suasenha
+    profissao:profissao a procurar
+    texto:texto para mensagem
     ```
 
 2. **Execute o script:**
@@ -48,7 +50,7 @@ Este projeto utiliza Selenium para automatizar o processo de conexão com pessoa
 
     - Abrir o LinkedIn.
     - Fazer login com as credenciais fornecidas.
-    - Pesquisar por "Desenvolvedor Python".
+    - Pesquisar pela profissão definida.
     - Filtrar os resultados por pessoas.
     - Clicar nos botões "Conectar".
     - Enviar uma mensagem personalizada para cada pessoa.
